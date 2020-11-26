@@ -14,14 +14,14 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Modelo" class="control-label"></label>
-                <input asp-for="Modelo" class="form-control" />
-                <span asp-validation-for="Modelo" class="text-danger"></span>
+                <label asp-for="Marca" class="control-label"></label>
+                <select asp-for="Marca" class="form-control" id="brands" onchange="changeModel(this)"></select>
+                <span asp-validation-for="Marca" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Marca" class="control-label"></label>
-                <input asp-for="Marca" class="form-control" />
-                <span asp-validation-for="Marca" class="text-danger"></span>
+                <label asp-for="Modelo" class="control-label"></label>
+                <select asp-for="Modelo" class="form-control" id="models" disabled></select>
+                <span asp-validation-for="Modelo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Placa" class="control-label"></label>
@@ -39,7 +39,7 @@
                 <span asp-validation-for="AnoFabricacao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" id="submitCreate" disabled/>
             </div>
         </form>
     </div>
@@ -51,4 +51,42 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var myObj = JSON.parse(this.responseText);
+                document.getElementById("brands").innerHTML = "<option></option>";
+                myObj.forEach(addBrandList);
+            }
+        };
+        xmlhttp.open("GET", "https://fipeapi.appspot.com/api/1/carros/marcas.json", true);
+        xmlhttp.send();
+
+        function addBrandList(item) {
+            document.getElementById("brands").innerHTML += "<option data-id=" + item.id + ">" + item.name + "</option>";
+        }
+    </script>
+    <script>
+        function changeModel(item) {
+            document.getElementById("models").innerHTML = "<option>Carregando....</option>";
+            var opt = item.options[item.selectedIndex];
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var myObj = JSON.parse(this.responseText);
+                    document.getElementById("models").innerHTML = "";
+                    document.getElementById("submitCreate").removeAttribute("disabled");
+                    document.getElementById("models").removeAttribute("disabled"); 
+                    myObj.forEach(addModelList);
+                }
+            };
+            xmlhttp.open("GET", "https://fipeapi.appspot.com/api/1/carros/veiculos/" + opt.getAttribute("data-id") + ".json", true);
+            xmlhttp.send();
+        }
+
+        function addModelList(item) {
+            document.getElementById("models").innerHTML += "<option>" + item.fipe_name + "</option>";
+        }
+    </script>
 }
