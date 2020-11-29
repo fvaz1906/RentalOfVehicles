@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RentalOfVehicles.Areas.Identity.Data;
 using RentalOfVehicles.Models;
 
 namespace RentalOfVehicles.Data

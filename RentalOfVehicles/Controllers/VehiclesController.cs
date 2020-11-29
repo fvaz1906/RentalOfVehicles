@@ -18,17 +18,17 @@ namespace RentalOfVehicles.Controllers
     public class VehiclesController : Controller
     {
 
-        private readonly DbRentalVehiclesContext _context;
+        private readonly VehiclesService _vehiclesService;
 
-        public VehiclesController(DbRentalVehiclesContext context)
+        public VehiclesController(VehiclesService vehiclesService)
         {
-            _context = context;
+            _vehiclesService = vehiclesService;
         }
 
         // GET: Vehicles
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Vehicles.Include(obj => obj.VehiclesReservation).ToListAsync());
+            return View(await _vehiclesService.FindAllAsync()); ;
         }
 
         // GET: Vehicles/Details/5
@@ -39,8 +39,8 @@ namespace RentalOfVehicles.Controllers
                 return NotFound();
             }
 
-            var vehicles = await _context.Vehicles
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var vehicles = await _vehiclesService.FindById(id.Value);
+
             if (vehicles == null)
             {
                 return NotFound();
@@ -57,8 +57,6 @@ namespace RentalOfVehicles.Controllers
         }
 
         // POST: Vehicles/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
@@ -66,8 +64,7 @@ namespace RentalOfVehicles.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(vehicles);
-                await _context.SaveChangesAsync();
+                await _vehiclesService.Insert(vehicles);
                 return RedirectToAction(nameof(Index));
             }
             return View(vehicles);
@@ -82,17 +79,17 @@ namespace RentalOfVehicles.Controllers
                 return NotFound();
             }
 
-            var vehicles = await _context.Vehicles.FindAsync(id);
+            var vehicles = await _vehiclesService.FindById(id.Value);
+
             if (vehicles == null)
             {
                 return NotFound();
             }
+
             return View(vehicles);
         }
 
         // POST: Vehicles/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
@@ -107,12 +104,11 @@ namespace RentalOfVehicles.Controllers
             {
                 try
                 {
-                    _context.Update(vehicles);
-                    await _context.SaveChangesAsync();
+                    await _vehiclesService.Update(vehicles);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!VehiclesExists(vehicles.Id))
+                    if (!_vehiclesService.VehiclesExists(vehicles.Id))
                     {
                         return NotFound();
                     }
@@ -135,8 +131,8 @@ namespace RentalOfVehicles.Controllers
                 return NotFound();
             }
 
-            var vehicles = await _context.Vehicles
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var vehicles = await _vehiclesService.FindById(id.Value);
+
             if (vehicles == null)
             {
                 return NotFound();
@@ -151,15 +147,9 @@ namespace RentalOfVehicles.Controllers
         [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var vehicles = await _context.Vehicles.FindAsync(id);
-            _context.Vehicles.Remove(vehicles);
-            await _context.SaveChangesAsync();
+            await _vehiclesService.Remove(id);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool VehiclesExists(int id)
-        {
-            return _context.Vehicles.Any(e => e.Id == id);
-        }
     }
 }

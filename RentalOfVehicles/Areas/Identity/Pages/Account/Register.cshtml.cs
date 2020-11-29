@@ -17,7 +17,7 @@ using RentalOfVehicles.Areas.Identity.Data;
 
 namespace RentalOfVehicles.Areas.Identity.Pages.Account
 {
-    [AllowAnonymous]
+    [Authorize]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<RentalOfVehiclesUser> _signInManager;

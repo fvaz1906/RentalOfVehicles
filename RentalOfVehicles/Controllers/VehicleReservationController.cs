@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RentalOfVehicles.Data;
 using RentalOfVehicles.Models;
+using RentalOfVehicles.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,16 +13,18 @@ namespace RentalOfVehicles.Controllers
     public class VehicleReservationController : Controller
     {
         private readonly DbRentalVehiclesContext _context;
+        private readonly VehiclesReservationService _vehiclesReservationService;
 
-        public VehicleReservationController(DbRentalVehiclesContext context)
+        public VehicleReservationController(DbRentalVehiclesContext context, VehiclesReservationService vehiclesReservationService)
         {
             _context = context;
+            _vehiclesReservationService = vehiclesReservationService;
         }
 
         public IActionResult Create(int id)
         {
             ViewData["id"] = id;
-            ViewData["vehicle"] = _context.Vehicles.Where(obj => obj.Id == id).FirstOrDefault();
+            ViewData["vehicle"] = _vehiclesReservationService.FindById(id);
             return View();
         }
 
@@ -31,8 +34,7 @@ namespace RentalOfVehicles.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(vehiclesReservation);
-                await _context.SaveChangesAsync();
+                await _vehiclesReservationService.Insert(vehiclesReservation);
                 return RedirectToAction("Index", "Vehicles");
             }
             return RedirectToAction("Index", "Vehicles");

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RentalOfVehicles.Areas.Identity.Data;
+using RentalOfVehicles.Models;
 
 namespace RentalOfVehicles.Data
 {

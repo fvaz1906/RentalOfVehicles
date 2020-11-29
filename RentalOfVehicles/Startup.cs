@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RentalOfVehicles.Areas.Identity.Data;
 using RentalOfVehicles.Data;
 using RentalOfVehicles.Models;
+using RentalOfVehicles.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,19 +33,20 @@ namespace RentalOfVehicles
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            services.AddScoped<Vehicles>();
-            services.AddScoped<VehiclesReservation>();
+            services.AddScoped<VehiclesService>();
+            services.AddScoped<VehiclesReservationService>();
 
             services.AddDbContext<DbRentalVehiclesContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("RentalOfVehiclesContextConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<RentalOfVehiclesUser> userManager)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                SeedingService.SeedUsers(userManager);
             }
             else
             {

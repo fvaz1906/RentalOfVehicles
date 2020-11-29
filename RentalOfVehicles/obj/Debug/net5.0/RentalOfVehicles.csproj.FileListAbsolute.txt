@@ -182,4 +182,3 @@ C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVeh
 C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\obj\Debug\net5.0\Razor\Views\Vehicles\Index.cshtml.g.cs
 C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\obj\Debug\net5.0\Razor\Views\VehicleReservation\Details.cshtml.g.cs
 C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\obj\Debug\net5.0\Razor\Views\VehicleReservation\Create.cshtml.g.cs
-C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\obj\Debug\net5.0\RentalOfVehicles.csprojAssemblyReference.cache

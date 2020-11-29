@@ -17,7 +17,6 @@ namespace RentalOfVehicles.Migrations.DbRentalVehicles
                     CPF = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateReservationInitial = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateReservationFinal = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     VehiclesId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
