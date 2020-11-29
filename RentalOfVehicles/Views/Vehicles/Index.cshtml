@@ -8,57 +8,88 @@
 }
 
 <h1>@ViewData["Title"]</h1>
+<hr />
 
 <p>
     @if (SignInManager.IsSignedIn(User))
-    { 
+    {
         <a asp-action="Create">Create New</a>
     }
 </p>
-<table class="table">
+
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Modelo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Marca)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Placa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnoModelo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnoFabricacao)
-            </th>
-            <th></th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Marca)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Modelo)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Placa)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.AnoModelo)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.AnoFabricacao)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.VehiclesReservation)</th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
+                <th>@Html.DisplayFor(modelItem => item.Marca)</th>
+                <td>@Html.DisplayFor(modelItem => item.Modelo)</td>
+                <td>@Html.DisplayFor(modelItem => item.Placa)</td>
+                <td>@Html.DisplayFor(modelItem => item.AnoModelo)</td>
+                <td>@Html.DisplayFor(modelItem => item.AnoFabricacao)</td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Modelo)
+                    @if (item.VehiclesReservation.ToList().Count > 0)
+                    {
+                        @foreach (var subitem in item.VehiclesReservation.ToList())
+                        {
+                            DateTime dateNow = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+                            DateTime dateInit = Convert.ToDateTime(subitem.DateReservationInitial.ToShortDateString());
+                            DateTime dateFinal = Convert.ToDateTime(subitem.DateReservationFinal.ToShortDateString());
+
+                            if (dateNow >= dateInit && dateNow <= dateFinal)
+                            {
+                                @(@"Reservado")
+                            }
+                            else
+                            {
+                                @(@"Disponível")
+                            }
+                        }
+                    }
+                    else
+                    {
+                        @(@"Disponível")
+                    }
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Marca)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Placa)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AnoModelo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AnoFabricacao)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    @if (SignInManager.IsSignedIn(User))
+                    {<a asp-action="Edit" asp-route-id="@item.Id" class="card-link">Edit</a>}
+                    @if (SignInManager.IsSignedIn(User))
+                    {<a asp-action="Delete" asp-route-id="@item.Id" class="card-link">Delete</a>}
+                    <a asp-action="Details" asp-route-id="@item.Id" class="card-link">Details</a>
+                    @if (item.VehiclesReservation.ToList().Count > 0)
+                    {
+                        @foreach (var subitem in item.VehiclesReservation.ToList())
+                        {
+                            DateTime dateNow = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+                            DateTime dateInit = Convert.ToDateTime(subitem.DateReservationInitial.ToShortDateString());
+                            DateTime dateFinal = Convert.ToDateTime(subitem.DateReservationFinal.ToShortDateString());
+
+                            if (dateNow >= dateInit && dateNow <= dateFinal)
+                            {
+
+                            }
+                            else
+                            {
+                                <a asp-controller="VehicleReservation" asp-action="Create" asp-route-id="@item.Id" class="card-link">Reservation</a>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <a asp-controller="VehicleReservation" asp-action="Create" asp-route-id="@item.Id" class="card-link">Reservation</a>
+                    }
                 </td>
             </tr>
         }

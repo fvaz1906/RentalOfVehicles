@@ -31,6 +31,7 @@ namespace RentalOfVehicles
             services.AddRazorPages();
 
             services.AddScoped<Vehicles>();
+            services.AddScoped<VehiclesReservation>();
 
             services.AddDbContext<DbRentalVehiclesContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("RentalOfVehiclesContextConnection")));
@@ -61,7 +62,7 @@ namespace RentalOfVehicles
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Vehicles}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

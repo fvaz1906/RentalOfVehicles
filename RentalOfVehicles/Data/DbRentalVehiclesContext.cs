@@ -14,6 +14,7 @@ namespace RentalOfVehicles.Data
         {
         }
 
-        public DbSet<RentalOfVehicles.Models.Vehicles> Vehicles { get; set; }
+        public DbSet<Vehicles> Vehicles { get; set; }
+        public DbSet<VehiclesReservation> VehiclesReservation { get; set; }
     }
 }

@@ -11,11 +11,13 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using RentalOfVehicles.Data;
 using RentalOfVehicles.Models;
+using RentalOfVehicles.Services;
 
 namespace RentalOfVehicles.Controllers
 {
     public class VehiclesController : Controller
     {
+
         private readonly DbRentalVehiclesContext _context;
 
         public VehiclesController(DbRentalVehiclesContext context)
@@ -26,7 +28,7 @@ namespace RentalOfVehicles.Controllers
         // GET: Vehicles
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Vehicles.ToListAsync());
+            return View(await _context.Vehicles.Include(obj => obj.VehiclesReservation).ToListAsync());
         }
 
         // GET: Vehicles/Details/5

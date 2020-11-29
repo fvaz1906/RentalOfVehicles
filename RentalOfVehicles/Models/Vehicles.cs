@@ -13,5 +13,7 @@ namespace RentalOfVehicles.Models
         public string Placa { get; set; }
         public int AnoModelo { get; set; }
         public int AnoFabricacao { get; set; }
+
+        public List<VehiclesReservation> VehiclesReservation { get; set; }
     }
 }
