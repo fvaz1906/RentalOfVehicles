@@ -18,11 +18,6 @@ namespace RentalOfVehicles.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public IActionResult Create(int id)
         {
             ViewData["id"] = id;
