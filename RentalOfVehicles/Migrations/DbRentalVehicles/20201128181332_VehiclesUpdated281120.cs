@@ -13,8 +13,8 @@ namespace RentalOfVehicles.Migrations.DbRentalVehicles
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CPF = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(200)", nullable: true),
+                    CPF = table.Column<string>(type: "nvarchar(200)", nullable: true),
                     DateReservationInitial = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateReservationFinal = table.Column<DateTime>(type: "datetime2", nullable: false),
                     VehiclesId = table.Column<int>(type: "int", nullable: true)

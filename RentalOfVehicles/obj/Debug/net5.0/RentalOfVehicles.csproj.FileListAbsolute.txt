@@ -182,3 +182,17 @@ C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVeh
 C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\obj\Debug\net5.0\Razor\Views\Vehicles\Index.cshtml.g.cs
 C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\obj\Debug\net5.0\Razor\Views\VehicleReservation\Details.cshtml.g.cs
 C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\obj\Debug\net5.0\Razor\Views\VehicleReservation\Create.cshtml.g.cs
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\bin\Debug\net5.0\published\web.config
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\bin\Debug\net5.0\published\appsettings.Development.json
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\bin\Debug\net5.0\published\appsettings.json
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\bin\Debug\net5.0\published\RentalOfVehicles.deps.json
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\bin\Debug\net5.0\published\RentalOfVehicles.runtimeconfig.json
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\bin\Debug\net5.0\published\wwwroot\lib\vanilla-masker\bankfacil_vanilla-masker\versions.json
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\bin\Debug\net5.0\published\wwwroot\lib\vanilla-masker\bower.json
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\bin\Debug\net5.0\published\wwwroot\lib\vanilla-masker\package.json
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\obj\Debug\net5.0\RentalOfVehicles.csprojAssemblyReference.cache
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\RentalOfVehicles\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll

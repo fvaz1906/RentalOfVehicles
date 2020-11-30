@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.OpenApi.Models;
 
 namespace RentalOfVehicles
 {
@@ -38,6 +39,11 @@ namespace RentalOfVehicles
 
             services.AddDbContext<DbRentalVehiclesContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("RentalOfVehiclesContextConnection")));
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "RentalOfVehicles", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +52,6 @@ namespace RentalOfVehicles
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                SeedingService.SeedUsers(userManager);
             }
             else
             {
@@ -54,6 +59,8 @@ namespace RentalOfVehicles
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            SeedingService.SeedUsers(userManager);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -68,6 +75,13 @@ namespace RentalOfVehicles
                     name: "default",
                     pattern: "{controller=Vehicles}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+            });
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "RentalOfVehicles V1");
             });
         }
     }

@@ -5,9 +5,11 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using RentalOfVehicles.Data;
 using RentalOfVehicles.Models;
@@ -19,21 +21,25 @@ namespace RentalOfVehicles.Controllers
     {
 
         private readonly VehiclesService _vehiclesService;
+        ILogger _logger;
 
-        public VehiclesController(VehiclesService vehiclesService)
+        public VehiclesController(VehiclesService vehiclesService, ILogger<VehiclesController> logger)
         {
             _vehiclesService = vehiclesService;
+            _logger = logger;
         }
 
-        // GET: Vehicles
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
+            _logger.LogInformation("Chamando metodo Index com listagem de veiculos -> GET: Vehicles");
             return View(await _vehiclesService.FindAllAsync()); ;
         }
 
-        // GET: Vehicles/Details/5
+        [HttpGet]
         public async Task<IActionResult> Details(int? id)
         {
+            _logger.LogInformation("Chamando metodo Details informacoees dos veiculos -> GET: Vehicles/Details/5");
             if (id == null)
             {
                 return NotFound();
@@ -49,19 +55,20 @@ namespace RentalOfVehicles.Controllers
             return View(vehicles);
         }
 
-        // GET: Vehicles/Create
+        [HttpGet]
         [Authorize]
         public IActionResult Create()
         {
+            _logger.LogInformation("Chamando metodo Create com formulario de cadastro de vículos -> GET: Vehicles/Create");
             return View();
         }
 
-        // POST: Vehicles/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Modelo,Marca,Placa,AnoModelo,AnoFabricacao")] Vehicles vehicles)
         {
+            _logger.LogInformation("Chamando metodo Create para adicionar um veículos a base de dados -> POST: Vehicles/Create ");
             if (ModelState.IsValid)
             {
                 await _vehiclesService.Insert(vehicles);
@@ -70,10 +77,11 @@ namespace RentalOfVehicles.Controllers
             return View(vehicles);
         }
 
-        // GET: Vehicles/Edit/5
+        [HttpGet]
         [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
+            _logger.LogInformation("Chamando metodo Edit para buscar o veiculo informado e retornar um formulario na view com os dados do veiculo -> GET: Vehicles/Edit/5");
             if (id == null)
             {
                 return NotFound();
@@ -89,12 +97,12 @@ namespace RentalOfVehicles.Controllers
             return View(vehicles);
         }
 
-        // POST: Vehicles/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Modelo,Marca,Placa,AnoModelo,AnoFabricacao")] Vehicles vehicles)
         {
+            _logger.LogInformation("Chamando metodo Edit para atualizar os registro do veiculo na base de dados -> POST: Vehicles/Edit/5");
             if (id != vehicles.Id)
             {
                 return NotFound();
@@ -122,10 +130,11 @@ namespace RentalOfVehicles.Controllers
             return View(vehicles);
         }
 
-        // GET: Vehicles/Delete/5
+        [HttpGet]
         [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
+            _logger.LogInformation("Chamando metodo Delete para retornar uma tela de confirmação da exclusão -> GET: Vehicles/Delete/5");
             if (id == null)
             {
                 return NotFound();
@@ -147,6 +156,7 @@ namespace RentalOfVehicles.Controllers
         [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            _logger.LogInformation("Chamando metodo DeleteConfirmed para confirmar a exclusão do veiculos -> GET: Vehicles/Delete/5");
             await _vehiclesService.Remove(id);
             return RedirectToAction(nameof(Index));
         }

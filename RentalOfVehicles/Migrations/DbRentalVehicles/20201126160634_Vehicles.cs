@@ -12,9 +12,9 @@ namespace RentalOfVehicles.Migrations.DbRentalVehicles
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Modelo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Marca = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Placa = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Modelo = table.Column<string>(type: "nvarchar(200)", nullable: true),
+                    Marca = table.Column<string>(type: "nvarchar(200)", nullable: true),
+                    Placa = table.Column<string>(type: "nvarchar(20)", nullable: true),
                     AnoModelo = table.Column<int>(type: "int", nullable: false),
                     AnoFabricacao = table.Column<int>(type: "int", nullable: false)
                 },
