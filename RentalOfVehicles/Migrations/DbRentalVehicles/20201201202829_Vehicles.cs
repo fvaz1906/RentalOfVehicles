@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RentalOfVehicles.Migrations.DbRentalVehicles
 {
-    public partial class Identity : Migration
+    public partial class Vehicles : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,13 +11,13 @@ namespace RentalOfVehicles.Migrations.DbRentalVehicles
                 name: "Vehicles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Modelo = table.Column<string>(type: "nvarchar(200)", nullable: true),
                     Marca = table.Column<string>(type: "nvarchar(200)", nullable: true),
                     Placa = table.Column<string>(type: "nvarchar(20)", nullable: true),
-                    AnoModelo = table.Column<int>(type: "int", nullable: false),
-                    AnoFabricacao = table.Column<int>(type: "int", nullable: false)
+                    AnoModelo = table.Column<int>(type: "INTEGER", nullable: false),
+                    AnoFabricacao = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,13 +28,13 @@ namespace RentalOfVehicles.Migrations.DbRentalVehicles
                 name: "VehiclesReservation",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "nvarchar(200)", nullable: true),
                     CPF = table.Column<string>(type: "nvarchar(200)", nullable: true),
-                    DateReservationInitial = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateReservationFinal = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    VehiclesId = table.Column<int>(type: "int", nullable: false)
+                    DateReservationInitial = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    DateReservationFinal = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    VehiclesId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

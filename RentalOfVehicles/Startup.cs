@@ -38,12 +38,8 @@ namespace RentalOfVehicles
             services.AddScoped<VehiclesReservationService>();
 
             services.AddDbContext<DbRentalVehiclesContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("RentalOfVehiclesContextConnection")));
+                    options.UseSqlite(Configuration.GetConnectionString("RentalOfVehiclesContextConnection")));
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "RentalOfVehicles", Version = "v1" });
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,12 +73,6 @@ namespace RentalOfVehicles
                 endpoints.MapRazorPages();
             });
 
-            app.UseSwagger();
-
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "RentalOfVehicles V1");
-            });
         }
     }
 }

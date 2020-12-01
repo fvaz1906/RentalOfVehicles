@@ -17,7 +17,7 @@ namespace RentalOfVehicles.Areas.Identity
         {
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<RentalOfVehiclesContext>(options =>
-                    options.UseSqlServer(
+                    options.UseSqlite(
                         context.Configuration.GetConnectionString("RentalOfVehiclesContextConnection")));
 
                 services.AddDefaultIdentity<RentalOfVehiclesUser>(options => 
