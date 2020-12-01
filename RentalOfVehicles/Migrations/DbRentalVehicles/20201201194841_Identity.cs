@@ -3,10 +3,27 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RentalOfVehicles.Migrations.DbRentalVehicles
 {
-    public partial class VehiclesUpdated281120 : Migration
+    public partial class Identity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Vehicles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Modelo = table.Column<string>(type: "nvarchar(200)", nullable: true),
+                    Marca = table.Column<string>(type: "nvarchar(200)", nullable: true),
+                    Placa = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    AnoModelo = table.Column<int>(type: "int", nullable: false),
+                    AnoFabricacao = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vehicles", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "VehiclesReservation",
                 columns: table => new
@@ -17,7 +34,7 @@ namespace RentalOfVehicles.Migrations.DbRentalVehicles
                     CPF = table.Column<string>(type: "nvarchar(200)", nullable: true),
                     DateReservationInitial = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateReservationFinal = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    VehiclesId = table.Column<int>(type: "int", nullable: true)
+                    VehiclesId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,7 +44,7 @@ namespace RentalOfVehicles.Migrations.DbRentalVehicles
                         column: x => x.VehiclesId,
                         principalTable: "Vehicles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -40,6 +57,9 @@ namespace RentalOfVehicles.Migrations.DbRentalVehicles
         {
             migrationBuilder.DropTable(
                 name: "VehiclesReservation");
+
+            migrationBuilder.DropTable(
+                name: "Vehicles");
         }
     }
 }

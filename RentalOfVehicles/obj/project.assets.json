@@ -8058,7 +8058,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\supervisor\\.nuget\\packages\\": {},
+    "C:\\Users\\felipe.vaz\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -8067,14 +8067,14 @@
       "projectUniqueName": "C:\\Users\\felipe.vaz\\Documents\\Projetos\\ASP Net Core\\RentalOfVehicles\\RentalOfVehicles\\RentalOfVehicles.csproj",
       "projectName": "RentalOfVehicles",
       "projectPath": "C:\\Users\\felipe.vaz\\Documents\\Projetos\\ASP Net Core\\RentalOfVehicles\\RentalOfVehicles\\RentalOfVehicles.csproj",
-      "packagesPath": "C:\\Users\\supervisor\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\felipe.vaz\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\felipe.vaz\\Documents\\Projetos\\ASP Net Core\\RentalOfVehicles\\RentalOfVehicles\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\supervisor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\felipe.vaz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

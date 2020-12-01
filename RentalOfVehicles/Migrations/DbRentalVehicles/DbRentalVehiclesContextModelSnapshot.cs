@@ -33,13 +33,13 @@ namespace RentalOfVehicles.Migrations.DbRentalVehicles
                         .HasColumnType("int");
 
                     b.Property<string>("Marca")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Modelo")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Placa")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("Id");
 
@@ -54,10 +54,7 @@ namespace RentalOfVehicles.Migrations.DbRentalVehicles
                         .UseIdentityColumn();
 
                     b.Property<string>("CPF")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<DateTime>("DateReservationFinal")
                         .HasColumnType("datetime2");
@@ -66,9 +63,9 @@ namespace RentalOfVehicles.Migrations.DbRentalVehicles
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(200)");
 
-                    b.Property<int?>("VehiclesId")
+                    b.Property<int>("VehiclesId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -82,7 +79,9 @@ namespace RentalOfVehicles.Migrations.DbRentalVehicles
                 {
                     b.HasOne("RentalOfVehicles.Models.Vehicles", null)
                         .WithMany("VehiclesReservation")
-                        .HasForeignKey("VehiclesId");
+                        .HasForeignKey("VehiclesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("RentalOfVehicles.Models.Vehicles", b =>

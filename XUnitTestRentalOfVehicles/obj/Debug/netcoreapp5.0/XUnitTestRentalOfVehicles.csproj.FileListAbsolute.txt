@@ -246,3 +246,11 @@ C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\XUnitTestRe
 C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\XUnitTestRentalOfVehicles\bin\Debug\netcoreapp5.0\published\wwwroot\lib\vanilla-masker\bower.json
 C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\XUnitTestRentalOfVehicles\bin\Debug\netcoreapp5.0\published\wwwroot\lib\vanilla-masker\package.json
 C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\XUnitTestRentalOfVehicles\bin\Debug\netcoreapp5.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\XUnitTestRentalOfVehicles\bin\Debug\netcoreapp5.0\published\published\web.config
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\XUnitTestRentalOfVehicles\bin\Debug\netcoreapp5.0\published\published\appsettings.Development.json
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\XUnitTestRentalOfVehicles\bin\Debug\netcoreapp5.0\published\published\appsettings.json
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\XUnitTestRentalOfVehicles\bin\Debug\netcoreapp5.0\published\published\RentalOfVehicles.deps.json
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\XUnitTestRentalOfVehicles\bin\Debug\netcoreapp5.0\published\published\RentalOfVehicles.runtimeconfig.json
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\XUnitTestRentalOfVehicles\bin\Debug\netcoreapp5.0\published\published\wwwroot\lib\vanilla-masker\bankfacil_vanilla-masker\versions.json
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\XUnitTestRentalOfVehicles\bin\Debug\netcoreapp5.0\published\published\wwwroot\lib\vanilla-masker\bower.json
+C:\Users\felipe.vaz\Documents\Projetos\ASP Net Core\RentalOfVehicles\XUnitTestRentalOfVehicles\bin\Debug\netcoreapp5.0\published\published\wwwroot\lib\vanilla-masker\package.json

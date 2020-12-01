@@ -10,8 +10,8 @@ using RentalOfVehicles.Data;
 namespace RentalOfVehicles.Migrations
 {
     [DbContext(typeof(RentalOfVehiclesContext))]
-    [Migration("20201126151336_CustomIdentity")]
-    partial class CustomIdentity
+    [Migration("20201201194818_Identity")]
+    partial class Identity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
